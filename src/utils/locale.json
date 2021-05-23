@@ -1,0 +1,12 @@
+{
+  "general": {
+    "name": "Name",
+    "fName": "First Name",
+    "lName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "cnfPassword": "Confirm Password",
+    "signup": "Signup",
+    "login": "Login"
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../styles/settings/colors';
+.input {
+    padding: 8px;
+    width: 100%;
+    &Label {
+
+
+        position: absolute;
+        z-index: 10;
+        color: grey;
+          transition:transform 100ms ease;
+
+      }
+    &Input {
+        background-color: $white;
+        width: 100%;
+        border-bottom: 4px solid $primary;
+        border-radius: 4px;
+        padding: 12px 16px;
+        outline: none;
+        border: none;
+    }
+
+
+}
+
