@@ -5,6 +5,7 @@ import Input from "../Input";
 import styles from "./signup.module.scss";
 import useMutableState from "../../hooks/useMutableState";
 import { general, errors as Errors } from "../../utils/locale.json";
+import { motion } from "framer-motion";
 import Checkbox from "../Checkbox";
 const Signup = () => {
   const [state, setState] = useMutableState({});
@@ -41,55 +42,62 @@ const Signup = () => {
   };
 
   return (
-    <Card className={styles.signup}>
-      <h2>Let's get started!</h2>
-      <div className={styles.signupRow}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
+    >
+      <Card className={styles.signup}>
+        <h2>Let's get started!</h2>
+        <div className={styles.signupRow}>
+          <Input
+            label={general.fName}
+            placeholder={general.fName}
+            value={fName}
+            type="text"
+            onChange={(e) => onChange(e, "fName")}
+          />
+          <Input
+            label={general.lName}
+            placeholder={general.lName}
+            value={lName}
+            type="text"
+            onChange={(e) => onChange(e, "lName")}
+          />
+        </div>
         <Input
-          label={general.fName}
-          placeholder={general.fName}
-          value={fName}
-          type="text"
-          onChange={(e) => onChange(e, "fName")}
+          label={general.email}
+          placeholder={general.email}
+          value={email}
+          type="email"
+          onChange={(e) => onChange(e, "email")}
         />
         <Input
-          label={general.lName}
-          placeholder={general.lName}
-          value={lName}
-          type="text"
-          onChange={(e) => onChange(e, "lName")}
+          label={general.password}
+          placeholder={general.password}
+          value={password}
+          type="password"
+          onChange={(e) => onChange(e, "password")}
         />
-      </div>
-      <Input
-        label={general.email}
-        placeholder={general.email}
-        value={email}
-        type="email"
-        onChange={(e) => onChange(e, "email")}
-      />
-      <Input
-        label={general.password}
-        placeholder={general.password}
-        value={password}
-        type="password"
-        onChange={(e) => onChange(e, "password")}
-      />
-      <Input
-        label={general.cnfPassword}
-        placeholder={general.cnfPassword}
-        value={cnfPassword}
-        type="password"
-        onChange={(e) => onChange(e, "cnfPassword")}
-      />
-      <Checkbox
-        label={
-          <p>
-            I agree to <b className={styles.bold}>Terms of service</b> and&nbsp;
-            <b className={styles.bold}>Privacy Policy</b>.
-          </p>
-        }
-      />
-      <Button title={general.signup} variant="Primary" />
-    </Card>
+        <Input
+          label={general.cnfPassword}
+          placeholder={general.cnfPassword}
+          value={cnfPassword}
+          type="password"
+          onChange={(e) => onChange(e, "cnfPassword")}
+        />
+        <Checkbox
+          label={
+            <p>
+              I agree to <b className={styles.bold}>Terms of service</b>{" "}
+              and&nbsp;
+              <b className={styles.bold}>Privacy Policy</b>.
+            </p>
+          }
+        />
+        <Button title={general.signup} variant="Primary" />
+      </Card>
+    </motion.div>
   );
 };
 
