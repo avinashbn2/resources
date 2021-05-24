@@ -1,26 +1,29 @@
-@import '../../styles/settings/__settings';
+@import "../../styles/settings/__settings";
 .signup {
-    padding: 60px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 600px;
+
+  @include respond-below(xs) {
+    width: 96%;
+    padding: 8px;
+  }
+
+  & > input,
+  & > button {
+    margin: 16px;
+  }
+
+  &Row {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height: 600px;
-
-    @include respond-below(sm) {
-        width: 96%;
-        padding: 8px;
-
-    }
-
-
-    &>input, &>button {
-        margin: 16px;
-    }
-
-    &Row {
-        display: flex;
-        justify-content:space-between;
-    }
+    justify-content: space-between;
+  }
+}
+.bold {
+  color: $secondary-dark;
 }

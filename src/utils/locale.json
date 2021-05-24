@@ -8,5 +8,11 @@
     "cnfPassword": "Confirm Password",
     "signup": "Signup",
     "login": "Login"
+  },
+  "errors": {
+    "required": "Required",
+    "email": "Invalid Email",
+    "password": "Invalid Password",
+    "cnfPassword": "Passwords don't match"
   }
 }

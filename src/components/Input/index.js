@@ -3,18 +3,17 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 const Input = ({ label, placeholder, value, onChange, type }) => {
   return (
-    <div className={styles.input}>
-      {/*
-
-
-
-      <label className={styles.inputLabel} htmlFor="input">
-        {label}
-
-      </label>
-        */}
+    <div
+      className={classNames(
+        styles.input,
+        value && value !== "" ? styles.animation : ""
+      )}
+    >
       <input
-        className={classNames(styles.inputInput, value !== "" ? "focused" : "")}
+        className={classNames(
+          styles.inputInput,
+          value && value !== "" ? styles.inputInputValid : ""
+        )}
         name="input"
         placeholder={placeholder}
         value={value}

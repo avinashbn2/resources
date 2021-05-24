@@ -4,36 +4,66 @@ import Button from "../Button";
 import Input from "../Input";
 import styles from "./signup.module.scss";
 import useMutableState from "../../hooks/useMutableState";
-import { general } from "../../utils/locale.json";
+import { general, errors as Errors } from "../../utils/locale.json";
+import Checkbox from "../Checkbox";
 const Signup = () => {
   const [state, setState] = useMutableState({});
-  const { name, password, cnfPassword, fName, lName, email } = state;
+  const { password, cnfPassword, fName, lName, email } = state;
+  console.log(state);
   const onChange = (e, type) => {
     setState({ [type]: e.target.value });
+
+    validate();
   };
+
+  const validate = () => {
+    const errors = {};
+
+    if (fName === "") {
+      errors.fName = Errors.required;
+    } else {
+      errors.fName = false;
+    }
+    if (email === "") {
+      errors.fName = Errors.required;
+    } else {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const res = re.test(String(email).toLowerCase());
+      if (!res) {
+        errors.email = Errors.email;
+      } else {
+        errors.email = false;
+      }
+    }
+    if (password === "") {
+      errors.password = Errors.required;
+    }
+  };
+
   return (
     <Card className={styles.signup}>
+      <h2>Let's get started!</h2>
       <div className={styles.signupRow}>
         <Input
           label={general.fName}
           placeholder={general.fName}
-          value={name}
+          value={fName}
           type="text"
-          onChange={(e) => onChange(e, "name")}
+          onChange={(e) => onChange(e, "fName")}
         />
         <Input
           label={general.lName}
           placeholder={general.lName}
-          value={name}
+          value={lName}
           type="text"
-          onChange={(e) => onChange(e, "name")}
+          onChange={(e) => onChange(e, "lName")}
         />
       </div>
       <Input
         label={general.email}
         placeholder={general.email}
         value={email}
-        type="text"
+        type="email"
         onChange={(e) => onChange(e, "email")}
       />
       <Input
@@ -49,6 +79,14 @@ const Signup = () => {
         value={cnfPassword}
         type="password"
         onChange={(e) => onChange(e, "cnfPassword")}
+      />
+      <Checkbox
+        label={
+          <p>
+            I agree to <b className={styles.bold}>Terms of service</b> and&nbsp;
+            <b className={styles.bold}>Privacy Policy</b>.
+          </p>
+        }
       />
       <Button title={general.signup} variant="Primary" />
     </Card>
