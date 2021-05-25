@@ -5,9 +5,10 @@ import Input from "../Input";
 import styles from "./signup.module.scss";
 import useMutableState from "../../hooks/useMutableState";
 import { general, errors as Errors } from "../../utils/locale.json";
-import { motion } from "framer-motion";
 import Checkbox from "../Checkbox";
-const Signup = () => {
+import Link from "../Link";
+import { motion } from "framer-motion";
+const Signup = ({ onClick }) => {
   const [state, setState] = useMutableState({});
   const { password, cnfPassword, fName, lName, email } = state;
   console.log(state);
@@ -42,12 +43,15 @@ const Signup = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3 }}
-    >
-      <Card className={styles.signup}>
+    <Card>
+      <motion.div
+        key="login"
+        initial={{ opacity: 0, y: 0, x: 100 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ bounce: 0, ease: "easeInOut" }}
+        className={styles.signup}
+      >
         <h2>Let's get started!</h2>
         <div className={styles.signupRow}>
           <Input
@@ -95,9 +99,13 @@ const Signup = () => {
             </p>
           }
         />
-        <Button title={general.signup} variant="Primary" />
-      </Card>
-    </motion.div>
+        <Button onClick={onClick} title={general.signup} variant="Primary" />
+        <div className={styles.signupMsg}>
+          Already have an account?{" "}
+          <Link onClick={onClick} title={general.login} />
+        </div>
+      </motion.div>
+    </Card>
   );
 };
 

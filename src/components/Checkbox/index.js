@@ -10,7 +10,9 @@ const Checkbox = ({ label }) => {
   };
   return (
     <div className={classNames(styles.checkbox, value ? styles.checked : "")}>
-      <label className={styles.checkboxLabel}>{label}</label>
+      <label htmlFor="checkbox" className={styles.checkboxLabel}>
+        {label}
+      </label>
       <input
         className={classNames(styles.checkboxInput)}
         name="checkbox"

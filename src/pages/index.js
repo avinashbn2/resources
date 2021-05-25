@@ -3,8 +3,19 @@ import Container from "../components/Container";
 import Button from "../components/Button";
 import styles from "../styles/index.module.scss";
 import Signup from "../components/SignUp";
+import Login from "../components/Login";
+import { useState } from "react";
 
+import { motion, AnimatePresence } from "framer-motion";
+
+const spring = {
+  type: "spring",
+  damping: 10,
+  stiffness: 100,
+  delay: 0.1,
+};
 export default function Home() {
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <Container>
       <Header>
@@ -20,7 +31,13 @@ export default function Home() {
       </Header>
       <div className={styles.body}>
         <div className={styles.bodySignup}>
-          <Signup />
+          <AnimatePresence>
+            {!showLogin ? (
+              <Signup onClick={() => setShowLogin(true)} />
+            ) : (
+              <Login onClick={() => setShowLogin(false)} />
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </Container>

@@ -1,7 +1,11 @@
-@import '../../styles/settings/colors';
+@import "../../styles/settings/__settings";
 .card {
     background-color: $cardbg;
     padding: 36px;
+
+  @include respond-below(xs) {
+      padding: 8px;
+  }
     //box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     //box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
     //box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;

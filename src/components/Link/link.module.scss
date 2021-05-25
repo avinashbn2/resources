@@ -1,0 +1,14 @@
+
+@import "../../styles/settings/__settings";
+.link {
+    text-decoration:  none;
+    text-transform: none;
+    color: $secondary-dark;
+    font-weight: bold;
+
+    cursor: pointer;
+    font-size: inherit;
+    &:hover {
+        text-decoration: underline;
+    }
+}
