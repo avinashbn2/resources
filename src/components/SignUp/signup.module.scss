@@ -1,16 +1,16 @@
 @import "../../styles/settings/__settings";
 .signup {
-  padding: 60px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 600px;
-  height: 600px;
+  height: 560px;
 
   @include respond-below(xs) {
     width: 100%;
-    padding: 8px;
+    padding: 16px 8px;
   }
 
   & > input,

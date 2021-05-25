@@ -19,6 +19,8 @@ const Login = ({ onClick }) => {
   return (
     <Card>
       <motion.div
+        width="100%"
+        height="100%"
         key="login"
         initial={{ opacity: 0, y: 0, x: 100 }}
         animate={{ opacity: 1, y: 0, x: 0 }}
