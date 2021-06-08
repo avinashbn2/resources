@@ -1,0 +1,19 @@
+@import '../../styles/settings/__settings';
+.sidebar {
+
+    background-color: $cardbg;
+    padding: 16px;
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    justify-content: flex-start;
+    transition: 0.3s all;
+    @include respond-below(sm) {
+        width: 0px;
+        display: none;
+    }
+
+    margin-top: 44px;
+    height: 600px;
+}

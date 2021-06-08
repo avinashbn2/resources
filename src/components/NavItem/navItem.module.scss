@@ -1,0 +1,17 @@
+@import '../../styles/settings/__settings';
+.navItem {
+    box-sizing: border-box;
+    color: $text;
+    font-size:1rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    position: relative;
+    &:hover {
+        background-color: $border;
+        color: white;
+        opacity: 0.7;
+        border-radius: 2px;
+    }
+}

@@ -55,7 +55,10 @@ const Login = ({ onClick }) => {
         <Button title={general.login} onClick={onClick} variant="Primary" />
         <div className={styles.loginMsg}>
           Don't have an account yet? &nbsp;
-          <Link onClick={onClick} title={general.signup} />
+          <Link
+            to="http://localhost:3001/auth/login?provider=google"
+            title={general.signup}
+          />
         </div>
       </motion.div>
     </Card>

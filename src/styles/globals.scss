@@ -56,3 +56,13 @@ input:-webkit-autofill {
 }
 
 
+.icon {
+
+    color: $text;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover {
+
+        opacity: 0.8
+    }
+}

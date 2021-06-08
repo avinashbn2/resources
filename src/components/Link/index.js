@@ -4,10 +4,17 @@ const Link = ({ onClick, title, to }) => {
   const onClickLink = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    onClick();
+    if (onClick) {
+      onClick();
+    }
   };
   return (
-    <a className={styles.link} onClick={onClickLink} href={to}>
+    <a
+      className={styles.link}
+      onClick={onClick ? onClickLink : undefined}
+      href={to}
+      //target="_blank"
+    >
       {title}
     </a>
   );

@@ -1,0 +1,75 @@
+@import "../../styles/settings/__settings";
+.resourceItem {
+  margin: 8px;
+  padding: 16px;
+  background-color: $cardbg;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  position: relative;
+  padding-bottom: 40px;
+  & > * {
+    margin: 4px 0px;
+  }
+  &Name {
+  }
+  &By {
+    font-size: 0.75rem;
+    color: $text;
+    & > span {
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+  &Footer {
+    width: calc(100% - 24px);
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &Excerpt {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    & > img {
+      padding-right: 16px;
+      width: 300px;
+    }
+  }
+
+  &Tag {
+    font-weight: 400;
+    font-size: 12px;
+
+    background-color: $inputbg;
+    border-radius: 4px;
+    width: max-content;
+    padding: 4px;
+  }
+}
+
+.likesContainer {
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+    font-size:11px;
+    &Icon {
+      color: $text;
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    &Like {
+
+      color: $secondary;
+    }
+
+}

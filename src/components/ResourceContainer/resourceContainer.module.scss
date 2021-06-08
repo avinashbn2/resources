@@ -1,0 +1,42 @@
+@import "../../styles/settings/mixins.scss";
+.resourceContainer {
+  padding: 36px;
+  padding-top: 0px;
+  width: 100%;
+  height: calc(100vh - 120px);
+  //overflow-x: hidden;
+  @include respond-below(lg) {
+    padding: 24px;
+  }
+  @include respond-below(sm) {
+    padding: 8px;
+  }
+  @include respond-below(xs) {
+    padding: 0px;
+  }
+  &Grid {
+    display: grid;
+    width: 100%;
+    grid-gap: 10px;
+
+    grid-template-columns: repeat(3, 1fr);
+    @include respond-below(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond-below(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-below(xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &List {
+  }
+  &Toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 16px;
+  }
+}
