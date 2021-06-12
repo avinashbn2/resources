@@ -2,11 +2,10 @@
 .sidebar {
 
     background-color: $cardbg;
-    padding: 16px;
-    padding-top: 32px;
+    padding: 16px 4px;
     display: flex;
     flex-direction: column;
-    width: 240px;
+    width: $sidebarWidth;
     justify-content: flex-start;
     transition: 0.3s all;
     @include respond-below(sm) {
@@ -14,6 +13,7 @@
         display: none;
     }
 
-    margin-top: 44px;
-    height: 600px;
+    left: 0;
+    position: fixed;
+    height: 100%;
 }

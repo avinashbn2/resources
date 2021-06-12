@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { getBaseURL } from "../api";
 
 function useResource(page, perPage) {
   const [resources, setResources] = useState([]);
@@ -8,13 +9,14 @@ function useResource(page, perPage) {
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
+    const baseURL = getBaseURL();
     let cancel;
     setLoading(true);
     if (page > 1) {
       console.log("params", page, perPage);
       axios({
         method: "GET",
-        url: `http://localhost:3001/resource?sortBy=likes:desc&page=${page}&limit=${perPage}`,
+        url: `${baseURL}resource?sortBy=likes:desc&page=${page}&limit=${perPage}`,
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
         withCredentials: true,
       })

@@ -4,14 +4,20 @@
     color: $text;
     font-size:1rem;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 8px 32px;
     cursor: pointer;
+    margin: 1px 0px;
+
+    //border-radius: 4px;
+
 
     position: relative;
     &:hover {
-        background-color: $border;
+        background-color: $secondary;
         color: white;
-        opacity: 0.7;
-        border-radius: 2px;
+    }
+    &Active {
+        background-color: $secondary;
+        color: white;
     }
 }

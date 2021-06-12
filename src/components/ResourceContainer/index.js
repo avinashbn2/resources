@@ -15,17 +15,16 @@ const ResourceContainer = ({ innerRef, resources, setResources }) => {
 
   const onLike = (params) => {
     like(params);
-    const currentObj = resources[params.rid];
-    setResources({
-      ...resources,
-      [params.rid]: {
-        ...currentObj,
-        likeByUser: !currentObj.likeByUser,
-        likes: currentObj.likeByUser
-          ? currentObj.likes - 1
-          : currentObj.likes + 1,
-      },
+    const idFound = resources.findIndex((val) => val.id === params.rid);
+    const obj = resources[idFound];
+    const { likeByUser = false, likes = 0 } = obj;
+    resources.splice(idFound, 1, {
+      ...obj,
+
+      likeByUser: !likeByUser,
+      likes: likeByUser ? likes - 1 : likes + 1,
     });
+    setResources([...resources]);
   };
   return (
     <div className={styles.resourceContainer}>
@@ -37,11 +36,8 @@ const ResourceContainer = ({ innerRef, resources, setResources }) => {
           <List className="icon" onClick={() => setViewType(VIEW_TYPE.LIST)} />
         )}
       </div>
-      <PerfectScrollbar
-        option={{ suppressScrollX: true }}
-        className={styles[`resourceContainer${viewType}`]}
-      >
-        {Object.values(resources).map(
+      <div className={styles[`resourceContainer${viewType}`]}>
+        {resources.map(
           (
             {
               url,
@@ -60,6 +56,7 @@ const ResourceContainer = ({ innerRef, resources, setResources }) => {
             return (
               <ResourceItem
                 innerRef={index === resources.length - 1 ? innerRef : undefined}
+                index={index}
                 key={id}
                 url={url}
                 id={id}
@@ -77,7 +74,7 @@ const ResourceContainer = ({ innerRef, resources, setResources }) => {
             );
           }
         )}
-      </PerfectScrollbar>
+      </div>
     </div>
   );
 };

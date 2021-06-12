@@ -1,9 +1,8 @@
-@import "../../styles/settings/mixins.scss";
+@import "../../styles/settings/_settings";
 .resourceContainer {
   padding: 36px;
   padding-top: 0px;
   width: 100%;
-  height: calc(100vh - 120px);
   //overflow-x: hidden;
   @include respond-below(lg) {
     padding: 24px;
@@ -19,7 +18,11 @@
     width: 100%;
     grid-gap: 10px;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    @include respond-below(xl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
     @include respond-below(lg) {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -38,5 +41,12 @@
     justify-content: flex-end;
     align-items: center;
     padding: 8px 16px;
+    position: fixed;
+    top: 0px;
+    height: $toolbarHeight;
+    z-index: 2;
+    background-color: $secondary-light;
+    width: 100%;
+    left:0px;
   }
 }

@@ -14,6 +14,7 @@ const spring = {
   stiffness: 100,
   delay: 0.1,
 };
+
 export default function Home() {
   const [showLogin, setShowLogin] = useState(false);
   return (

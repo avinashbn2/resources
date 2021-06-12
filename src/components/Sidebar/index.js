@@ -1,38 +1,44 @@
+import { useState } from "react";
 import styles from "./sidebar.module.scss";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";
+import { useRouter } from "next/router";
+import { logout } from "../../api";
 const config = [
   {
+    label: "All",
+    route: "/resources",
+  },
+
+  {
     label: "Favourites",
-    onClick: () => {
-      console.log("fav");
-    },
+    route: "/resources/liked",
   },
   {
-    label: "Most Popular",
-    onClick: () => {
-      console.log("fav");
-    },
+    label: "Trending",
+    route: "/resources/trending",
   },
   {
     label: "Recently Added",
-    onClick: () => {
-      console.log("fav");
-    },
-  },
-  {
-    label: "Tags",
-    onClick: () => {
-      console.log("fav");
-    },
+    route: "/resources/recent",
   },
 ];
 const Sidebar = () => {
+  const router = useRouter();
+  const onClick = (label, route) => {
+    router.push(route);
+  };
+
   return (
     <div className={styles.sidebar}>
-      {config.map(({ label, onClick }) => (
-        <NavItem label={label} onClick={onClick} />
+      {config.map(({ label, route }) => (
+        <NavItem
+          label={label}
+          active={router.pathname === route}
+          onClick={() => onClick(label, route)}
+        />
       ))}
+      <NavItem label="Logout" onClick={() => logout()} />
     </div>
   );
 };

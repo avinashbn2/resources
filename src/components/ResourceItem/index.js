@@ -4,6 +4,7 @@ import Link from "../Link";
 import { VIEW_TYPE } from "../../utils/constants";
 import { FaThumbsUp } from "react-icons/fa";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 const ResourceItem = ({
   innerRef,
   name,
@@ -18,12 +19,21 @@ const ResourceItem = ({
   likeByUser,
   likes,
   onLike,
+  index,
 }) => {
   const onClick = () => {
     onLike({ rid: id });
   };
   return (
-    <div ref={innerRef} className={styles.resourceItem}>
+    <motion.div
+      key="login"
+      initial={{ opacity: 0, y: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0, y: 0 }}
+      exit={{ opacity: 0, y: -100 }}
+      transition={{ bounce: 0, ease: "easeInOut", delay: index * 0.03 }}
+      ref={innerRef}
+      className={styles.resourceItem}
+    >
       <h4 className={styles.resourceItemName}>
         <Link title={name} to={url} />{" "}
       </h4>
@@ -51,7 +61,7 @@ const ResourceItem = ({
           {likes}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
