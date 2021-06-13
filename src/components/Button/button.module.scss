@@ -7,6 +7,8 @@
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    align-items: center;
     &Primary {
 
         background-color: $secondary ;
@@ -25,6 +27,9 @@
     &:focus {
 
         //background-color: $secondary-dark ;
+    }
+    &Icon {
+        padding: 0px 8px;
     }
 
 }

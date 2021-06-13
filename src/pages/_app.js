@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps, router }) {
   const store = useStore(pageProps.initialReduxState);
   return (
     <Provider store={store}>
-      <AnimatePresence>
+      <AnimatePresence style={{ width: "100%" }}>
         <motion.div
           key={router.route}
           inital="pageInitial"
@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps, router }) {
               opacity: 1,
             },
           }}
+          style={{ width: "100%" }}
         >
           <Component {...pageProps} />
         </motion.div>

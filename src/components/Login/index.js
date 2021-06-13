@@ -9,6 +9,8 @@ import { general, errors as Errors } from "../../utils/locale.json";
 import Checkbox from "../Checkbox";
 import Link from "../Link";
 import { motion } from "framer-motion";
+import { FaGoogle } from "react-icons/fa";
+import Separator from "../Separator";
 const Login = ({ onClick }) => {
   const [state, setState] = useMutableState({});
   const { password, email } = state;
@@ -55,11 +57,18 @@ const Login = ({ onClick }) => {
         <Button title={general.login} onClick={onClick} variant="Primary" />
         <div className={styles.loginMsg}>
           Don't have an account yet? &nbsp;
-          <Link
-            to="http://localhost:3001/auth/login?provider=google"
-            title={general.signup}
-          />
+          <Link to="/" onClick={onClick} title={general.signup}></Link>
         </div>
+        <Separator text="OR" />
+        <Link to="https://api.devsanctum.net/auth/login?provider=google">
+          <Button
+            variant="Primary"
+            title="Login With Google"
+            onClick={() => {}}
+          >
+            <FaGoogle />
+          </Button>
+        </Link>
       </motion.div>
     </Card>
   );

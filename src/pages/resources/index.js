@@ -32,9 +32,9 @@ const Resources = () => {
     }
     observer.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        if (total > 20 * page) {
-          setPage((ppage) => ppage + 1);
-        }
+        //if (total > 20 * page) {
+        setPage((ppage) => ppage + 1);
+        //}
       }
     });
     if (node) {

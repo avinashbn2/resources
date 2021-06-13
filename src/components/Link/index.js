@@ -1,6 +1,6 @@
 import styles from "./link.module.scss";
 import PropTypes from "prop-types";
-const Link = ({ onClick, title, to }) => {
+const Link = ({ onClick, title, to, children }) => {
   const onClickLink = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -10,12 +10,12 @@ const Link = ({ onClick, title, to }) => {
   };
   return (
     <a
-      className={styles.link}
+      className={title ? styles.link : styles.noLink}
       onClick={onClick ? onClickLink : undefined}
       href={to}
       //target="_blank"
     >
-      {title}
+      {title ? title : children}
     </a>
   );
 };
