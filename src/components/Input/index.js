@@ -1,7 +1,7 @@
 import styles from "./input.module.scss";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-const Input = ({ label, placeholder, value, onChange, type }) => {
+const Input = ({ bg, label, placeholder, value, onChange, type }) => {
   return (
     <div
       className={classNames(
@@ -12,7 +12,8 @@ const Input = ({ label, placeholder, value, onChange, type }) => {
       <input
         className={classNames(
           styles.inputInput,
-          value && value !== "" ? styles.inputInputValid : ""
+          value && value !== "" ? styles.inputInputValid : "",
+          bg ? styles[`input${bg}`] : ""
         )}
         name="input"
         placeholder={placeholder}

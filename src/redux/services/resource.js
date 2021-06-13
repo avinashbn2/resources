@@ -14,8 +14,14 @@ export const api = createApi({
   tagTypes: ["resource"],
   endpoints: (build) => ({
     getResource: build.query({
-      query: (page = 1, perPage = 20, sortOrder = "desc", sortBy = "likes") =>
-        `resource?sortBy=${sortBy}:${sortOrder}&page=${page}&limit=${perPage}`,
+      query: ({
+        page = 1,
+        perPage = 20,
+        sortOrder = "desc",
+        sortBy = "likes",
+        search = "",
+      }) =>
+        `resource?search=${search}&sortBy=${sortBy}:${sortOrder}&page=${page}&limit=${perPage}`,
     }),
     // get resources liked by the current user
     getResourceByUserLikes: build.query({

@@ -9,8 +9,20 @@ import { BsFillGrid3X3GapFill as Grid } from "react-icons/bs";
 import { FaList as List } from "react-icons/fa";
 import { VIEW_TYPE } from "../../utils/constants";
 import { like } from "../../api";
+import Input from "../Input";
+import Select from "../Select";
 
-const ResourceContainer = ({ innerRef, resources, setResources }) => {
+const ResourceContainer = ({
+  searchKey,
+  setSearchKey,
+  innerRef,
+  resources,
+  setResources,
+  sortBy,
+  setSortBy,
+  sortOrder,
+  setSortOrder,
+}) => {
   const [viewType, setViewType] = useState(VIEW_TYPE.GRID);
 
   const onLike = (params) => {
@@ -29,6 +41,35 @@ const ResourceContainer = ({ innerRef, resources, setResources }) => {
   return (
     <div className={styles.resourceContainer}>
       <div className={styles.resourceContainerToolbar}>
+        <Input
+          label="Search.."
+          placeholder="Search..."
+          value={searchKey}
+          type="text"
+          onChange={(e) => setSearchKey(e.target.value)}
+          bg="Light"
+        />
+        <Select
+          options={[
+            { label: "Title", value: "title" },
+            { label: "Added", value: "created_at" },
+            { label: "Likes", value: "likes" },
+          ]}
+          value={sortBy}
+          onChange={(e) => {
+            setSortBy(e.target.value);
+          }}
+        ></Select>
+        <Select
+          options={[
+            { label: "asc", value: "asc" },
+            { label: "desc", value: "desc" },
+          ]}
+          value={sortOrder}
+          onChange={(e) => {
+            setSortOrder(e.target.value);
+          }}
+        ></Select>
         {viewType === VIEW_TYPE.LIST && (
           <Grid className="icon" onClick={() => setViewType(VIEW_TYPE.GRID)} />
         )}

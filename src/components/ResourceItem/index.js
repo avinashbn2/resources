@@ -35,7 +35,7 @@ const ResourceItem = ({
       className={styles.resourceItem}
     >
       <h4 className={styles.resourceItemName}>
-        <Link title={name} to={url} />{" "}
+        <Link newTab title={name} to={url} />{" "}
       </h4>
       <div className={styles.resourceItemTag}>{tag}</div>
       <div className={styles.resourceItemExcerpt}>
