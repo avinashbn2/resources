@@ -6,8 +6,13 @@
     padding-left: $sidebarWidth;
     padding-top: $toolbarHeight;
     &FullWidth {
-
-        padding: 0 ;
+        padding: 16px ;
     }
+
+    @include respond-below(xs) {
+
+        padding: 50px 8px;
+    }
+
 
 }
