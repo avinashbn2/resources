@@ -2,7 +2,8 @@ import axios from "axios";
 
 export const getBaseURL = () => {
   return process.env.NODE_ENV === "development"
-    ? "http://localhost:3001"
+    ? //? "http://localhost:3001"
+      "https://api.devsanctum.net"
     : "https://api.devsanctum.net";
 };
 const axiosInstance = axios.create({
